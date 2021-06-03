@@ -12,11 +12,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
-    textColor = (data['dayOrNight'] == 'morn') ? Colors.black : Colors.white ;
+    textColor = (data['dayOrNight'] == 'morn') ? Colors.black : Colors.white;
 
     return SafeArea(
       child: Scaffold(
-          backgroundColor: (data['dayOrNight'] == 'morn') ? Colors.yellow : Colors.blue[900],
+          backgroundColor: Colors
+              .yellow, // TODO: to change background color based on 'BackgroundCubit'
           body: Padding(
             padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 60.0),
             child: Container(
@@ -29,7 +30,7 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          data['location'],
+                          "London", // TODO: get location name based on 'TodayCubit'
                           style: TextStyle(
                             color: textColor,
                             fontSize: 50.0,
@@ -61,9 +62,10 @@ class _HomeState extends State<Home> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('lib/assets/icons/${data['mainIcon']}.png'),
+                        Image.asset(
+                            'lib/assets/icons/${data['mainIcon']}.png'), // TODO: get weather icon based on 'TodayCubit'
                         Text(
-                          data['tempToday'],
+                          "21", // TODO: get current temp. based on 'TodayCubit'
                           style: TextStyle(
                             fontSize: 25.0,
                             color: textColor,
@@ -87,7 +89,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            data['dayPlusOneTemp'],
+                            "17", // TODO: get current temp. based on 'TomorrowCubit'
                             style: TextStyle(
                                 color: textColor,
                                 fontWeight: FontWeight.bold,
@@ -97,7 +99,7 @@ class _HomeState extends State<Home> {
                               height: 30.0,
                               width: 40.0,
                               child: Image.asset(
-                                  'lib/assets/icons/${data['dayPlusOneIcon']}.png')),
+                                  'lib/assets/icons/${data['dayPlusOneIcon']}.png')), // TODO: get weather icon based on 'TomorrowCubit'
                         ],
                       ),
                     ],
@@ -111,7 +113,7 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        data['dayPlusTwo'],
+                        "Sunday", // TODO: get weekday name based on 'WeekdayCubit'
                         style: TextStyle(
                             color: textColor,
                             fontWeight: FontWeight.bold,
@@ -121,7 +123,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            data['dayPlusTwoTemp'],
+                            "17", // TODO: get current temp. based on 'TomorrowPlusOneCubit'
                             style: TextStyle(
                                 color: textColor,
                                 fontWeight: FontWeight.bold,
@@ -131,7 +133,7 @@ class _HomeState extends State<Home> {
                               height: 30.0,
                               width: 40.0,
                               child: Image.asset(
-                                  'lib/assets/icons/${data['dayPlusTwoIcon']}.png')),
+                                  'lib/assets/icons/${data['dayPlusTwoIcon']}.png')), // TODO: get weather icon based on 'TomorrowPlusOneCubit'
                         ],
                       ),
                     ],
@@ -145,7 +147,7 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        data['dayPlusThree'],
+                        "Monday", // TODO: get weekday name based on 'WeekdayCubit'
                         style: TextStyle(
                             color: textColor,
                             fontWeight: FontWeight.bold,
@@ -155,7 +157,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            data['dayPlusThreeTemp'],
+                            "24", // TODO: get current temp. based on 'TomorrowPlusTwoCubit'
                             style: TextStyle(
                                 color: textColor,
                                 fontWeight: FontWeight.bold,
@@ -165,7 +167,7 @@ class _HomeState extends State<Home> {
                               height: 30.0,
                               width: 40.0,
                               child: Image.asset(
-                                  'lib/assets/icons/${data['dayPlusThreeIcon']}.png')),
+                                  'lib/assets/icons/${data['dayPlusThreeIcon']}.png')), // TODO: get weather icon based on 'TomorrowPlusTwoCubit'
                         ],
                       ),
                     ],

@@ -1,7 +1,3 @@
-class WeatherItems {
-  static var data;
-}
-
 class WeatherModel {
   double latitude;
   double longitude;
