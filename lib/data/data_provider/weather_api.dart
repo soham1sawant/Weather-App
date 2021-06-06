@@ -16,7 +16,6 @@ class WeatherApi {
   }
 
   Future getRawWeather() async {
-    getLocation();
     var response = await get(Uri.parse(
         "https://api.openweathermap.org/data/2.5/onecall?lat=${latitude.toString()}&lon=${longitude.toString()}&exclude=current,minutely,hourly,alerts&units=metric&appid=$_appkey"));
 
