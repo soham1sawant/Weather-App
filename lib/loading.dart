@@ -17,8 +17,7 @@ class _LoadingState extends State<Loading> {
   String mornOrNight;
 
   Future getData(var latitude, var longitude) async {
-    var response = await get(
-        "https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,hourly,alerts&units=metric&appid=$key");
+    var response = await get(Uri.parse("https://api.openweathermap.org/data/2.5/onecall?lat=$latitude&lon=$longitude&exclude=current,minutely,hourly,alerts&units=metric&appid=$key"));
     var jsondata = jsonDecode(response.body);
     WeatherItems.data = WeatherModel.fromJson(jsondata);
   }
