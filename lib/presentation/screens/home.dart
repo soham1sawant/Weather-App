@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/logic/cubit/today_cubit.dart';
+import 'package:weather_app/logic/bloc/current_bloc.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -25,15 +25,19 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        BlocBuilder<TodayCubit, TodayState>(
+                        BlocBuilder<CurrentBloc, CurrentState>(
                           builder: (context, state) {
-                            return Text(
-                              state.location, // TODO:
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 50.0,
-                              ),
-                            );
+                            if (state.error) {
+                              return Icon(Icons.error);
+                            } else {
+                              return Text(
+                                state.data.areaName, // TODO:
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 50.0,
+                                ),
+                              );
+                            }
                           },
                         ),
                         Icon(

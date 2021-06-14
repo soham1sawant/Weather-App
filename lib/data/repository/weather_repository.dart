@@ -12,7 +12,6 @@ class WeatherRepository {
   }
 
   Future<Weather> getCurrentDayWeather() async {
-    final currentWeather = await weatherApi.getCurrentWeather();
-    return currentWeather;
+    return await weatherApi.getCurrentWeather();    
   }
 }

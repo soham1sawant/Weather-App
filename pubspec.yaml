@@ -27,14 +27,13 @@ dependencies:
   cupertino_icons: ^1.0.0
   equatable: ^2.0.2
   flutter_bloc: ^7.0.1
+  geolocator: ^6.1.7
+  http: ^0.13.3
+  weather: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  geolocator: ^6.1.7
-  http: ^0.12.2
-  weather: ^1.2.4
-  weather_icons: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
