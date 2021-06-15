@@ -7,4 +7,4 @@ abstract class CurrentEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class CurrentFetched extends CurrentEvent {}
+class CurrentRequested extends CurrentEvent {}

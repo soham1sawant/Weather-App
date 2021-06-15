@@ -27,16 +27,20 @@ class _HomeState extends State<Home> {
                       children: [
                         BlocBuilder<CurrentBloc, CurrentState>(
                           builder: (context, state) {
-                            if (state.error) {
-                              return Icon(Icons.error);
-                            } else {
+                            if (state is CurrentWeatherInProgress) {
+                              return CircularProgressIndicator();
+                            }
+                            else if(state is CurrentWeatherLoadSuccess) {
                               return Text(
-                                state.data.areaName, // TODO:
+                                state.weather.areaName, // TODO:
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 50.0,
                                 ),
                               );
+                            }
+                            else {
+                              return Icon(Icons.error);
                             }
                           },
                         ),
