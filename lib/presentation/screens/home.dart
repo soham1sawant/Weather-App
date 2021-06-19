@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/logic/bloc/current_bloc/current_bloc.dart';
 import 'package:weather_app/logic/bloc/next_days_bloc/next_days_bloc.dart';
+import 'package:weather_app/logic/weekday.dart';
 
 class Home extends StatelessWidget {
+  WeekDay _weekDay = WeekDay.getDays();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,7 +73,12 @@ class Home extends StatelessWidget {
                               Image.asset(
                                   'lib/assets/icons/${state.weather.weatherIcon}.png'),
                               Text(
-                                state.weather.temperature.toString().substring(0,state.weather.temperature.toString().indexOf(' ')) +' °C',
+                                state.weather.temperature.toString().substring(
+                                        0,
+                                        state.weather.temperature
+                                            .toString()
+                                            .indexOf(' ')) +
+                                    ' °C',
                                 style: TextStyle(
                                   fontSize: 25.0,
                                   color: Colors.black,
@@ -102,7 +110,9 @@ class Home extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  state.weather.daily[1].temp.day.toStringAsFixed(1) + ' °C',
+                                  state.weather.daily[1].temp.day
+                                          .toStringAsFixed(1) +
+                                      ' °C',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -131,7 +141,7 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Sunday", // TODO: get weekday name
+                        _weekDay.dayplus2, // TODO: get weekday name
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -144,7 +154,9 @@ class Home extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  state.weather.daily[2].temp.day.toStringAsFixed(1) + ' °C', 
+                                  state.weather.daily[2].temp.day
+                                          .toStringAsFixed(1) +
+                                      ' °C',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -154,7 +166,7 @@ class Home extends StatelessWidget {
                                     height: 30.0,
                                     width: 40.0,
                                     child: Image.asset(
-                                        'lib/assets/icons/${state.weather.daily[2].weatherV[0].icon}.png')), 
+                                        'lib/assets/icons/${state.weather.daily[2].weatherV[0].icon}.png')),
                               ],
                             );
                           } else {
@@ -173,7 +185,7 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Monday", // TODO: get weekday name 
+                        _weekDay.dayplus3, // TODO: get weekday name
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -186,17 +198,18 @@ class Home extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  state.weather.daily[3].temp.day.toStringAsFixed(1) + ' °C', 
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0)
-                                ),
+                                    state.weather.daily[3].temp.day
+                                            .toStringAsFixed(1) +
+                                        ' °C',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17.0)),
                                 SizedBox(
                                     height: 30.0,
                                     width: 40.0,
                                     child: Image.asset(
-                                        'lib/assets/icons/${state.weather.daily[3].weatherV[0].icon}.png')), 
+                                        'lib/assets/icons/${state.weather.daily[3].weatherV[0].icon}.png')),
                               ],
                             );
                           } else {
