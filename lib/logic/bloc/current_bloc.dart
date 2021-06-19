@@ -9,7 +9,6 @@ part 'current_event.dart';
 part 'current_state.dart';
 
 class CurrentBloc extends Bloc<CurrentEvent, CurrentState> {
-
   final WeatherRepository weatherRepository;
 
   CurrentBloc(this.weatherRepository) : super(CurrentWeatherInProgress());
@@ -17,12 +16,8 @@ class CurrentBloc extends Bloc<CurrentEvent, CurrentState> {
   @override
   Stream<CurrentState> mapEventToState(CurrentEvent event) async* {
     if (event is CurrentRequested) {
-      try {
-        final data = await weatherRepository.getCurrentDayWeather();
-        yield CurrentWeatherLoadSuccess(data);
-      } catch (error) {
-        yield CurrentWeatherLoadFailure();
-      }
+      final data = await weatherRepository.getCurrentDayWeather();
+      yield CurrentWeatherLoadSuccess(data);
     }
   }
 }
