@@ -29,17 +29,15 @@ class _HomeState extends State<Home> {
                           builder: (context, state) {
                             if (state is CurrentWeatherInProgress) {
                               return CircularProgressIndicator();
-                            }
-                            else if(state is CurrentWeatherLoadSuccess) {
+                            } else if (state is CurrentWeatherLoadSuccess) {
                               return Text(
-                                state.weather.areaName, // TODO:
+                                state.weather.areaName,
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 50.0,
                                 ),
                               );
-                            }
-                            else {
+                            } else {
                               return Icon(Icons.error);
                             }
                           },
@@ -67,20 +65,30 @@ class _HomeState extends State<Home> {
                   ),
                   Expanded(
                     flex: 5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                            'lib/assets/icons/01d.png'), // TODO: get weather icon based on 'TodayCubit'
-                        Text(
-                          "21", // TODO: get current temp. based on 'TodayCubit'
-                          style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    child: BlocBuilder<CurrentBloc, CurrentState>(
+                      builder: (context, state) {
+                        if (state is CurrentWeatherInProgress) {
+                          return CircularProgressIndicator();
+                        } else if (state is CurrentWeatherLoadSuccess) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                  'lib/assets/icons/${state.weather.weatherIcon}.png'),
+                              Text(
+                                state.weather.temperature.toString().substring(0, state.weather.temperature.toString().indexOf(' ')) + ' °C', // TODO: get icon for Celcius
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Icon(Icons.error);
+                        }
+                      },
                     ),
                   ),
                   Row(
