@@ -1,7 +1,3 @@
-class WeatherItems {
-  static var data;
-}
-
 class WeatherModel {
   double latitude;
   double longitude;
@@ -22,11 +18,12 @@ class WeatherModel {
     List<Daily> dailyList = list.map((i) => Daily.fromJson(i)).toList();
 
     return WeatherModel(
-        latitude: json["lat"],
-        longitude: json["lon"],
-        timezone: json["timezone"],
-        timezoneOffset: json["timezone_offset"],
-        daily: dailyList);
+      latitude: json["lat"],
+      longitude: json["lon"],
+      timezone: json["timezone"],
+      timezoneOffset: json["timezone_offset"],
+      daily: dailyList,
+    );
   }
 }
 
