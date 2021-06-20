@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/logic/bloc/current_bloc/current_bloc.dart';
-import 'package:weather_app/logic/bloc/next_days_bloc/next_days_bloc.dart';
-import 'package:weather_app/logic/the_colors.dart';
-import 'package:weather_app/logic/weekday.dart';
+
+import '../../logic/bloc/current_bloc/current_bloc.dart';
+import '../../logic/bloc/next_days_bloc/next_days_bloc.dart';
+import '../../logic/the_colors.dart';
+import '../../logic/weekday.dart';
 
 class Home extends StatelessWidget {
   final _weekDay = WeekDay.getDays();

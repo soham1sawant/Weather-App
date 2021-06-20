@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:weather_app/data/model/weather_model.dart';
-import 'package:weather_app/data/repository/weather_repository.dart';
+import '../../../data/model/weather_model.dart';
+import '../../../data/repository/weather_repository.dart';
 
 part 'next_days_event.dart';
 part 'next_days_state.dart';

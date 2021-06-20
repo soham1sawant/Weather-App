@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/data/repository/weather_repository.dart';
-import 'package:weather_app/logic/bloc/current_bloc/current_bloc.dart';
-import 'package:weather_app/logic/bloc/next_days_bloc/next_days_bloc.dart';
-import 'package:weather_app/logic/simple_bloc_observer.dart';
-import 'package:weather_app/presentation/screens/home.dart';
+import 'data/repository/weather_repository.dart';
+import 'logic/bloc/current_bloc/current_bloc.dart';
+import 'logic/bloc/next_days_bloc/next_days_bloc.dart';
+import 'logic/simple_bloc_observer.dart';
+import 'presentation/screens/home.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
