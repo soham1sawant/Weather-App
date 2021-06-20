@@ -1,7 +1,8 @@
 import 'dart:convert';
+
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart';
 import 'package:weather/weather.dart';
-import 'package:geolocator/geolocator.dart';
 
 class WeatherProvider {
   final String _appkey = "53c35e7e8abd3bc3d76a5afce24d6a16";

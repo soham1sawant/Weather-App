@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../logic/bloc/current_bloc/current_bloc.dart';
-import '../../logic/bloc/next_days_bloc/next_days_bloc.dart';
-import '../../logic/the_colors.dart';
 import '../../logic/weekday.dart';
+import '../widgets/bottom_row.dart';
+import '../../logic/bloc/current_bloc/current_bloc.dart';
+import '../../logic/the_colors.dart';
 
 class Home extends StatelessWidget {
   final _weekDay = WeekDay.getDays();
@@ -98,148 +97,30 @@ class Home extends StatelessWidget {
                       },
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'TOMORROW',
-                        style: TextStyle(
-                          color: _theColors.textColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17.0,
-                        ),
-                      ),
-                      BlocBuilder<NextDaysBloc, NextDaysState>(
-                        builder: (context, state) {
-                          if (state is NextDaysLoadSuccess) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.weather.daily[1].temp.day
-                                          .toStringAsFixed(1) +
-                                      ' °C',
-                                  style: TextStyle(
-                                    color: _theColors.textColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17.0,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 30.0,
-                                  width: 40.0,
-                                  child: Image.asset(
-                                      'lib/assets/icons/${state.weather.daily[1].weatherV[0].icon}.png'),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return Icon(
-                              Icons.error,
-                              color: _theColors.textColor,
-                            );
-                          }
-                        },
-                      ),
-                    ],
+                  BottomRow(
+                    color: _theColors.textColor,
+                    day: "TOMORROW",
+                    num: 1,
                   ),
                   Container(
                     height: 4.0,
                     width: 400.0,
                     color: _theColors.textColor,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _weekDay.dayplus2,
-                        style: TextStyle(
-                          color: _theColors.textColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17.0,
-                        ),
-                      ),
-                      BlocBuilder<NextDaysBloc, NextDaysState>(
-                        builder: (context, state) {
-                          if (state is NextDaysLoadSuccess) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.weather.daily[2].temp.day
-                                          .toStringAsFixed(1) +
-                                      ' °C',
-                                  style: TextStyle(
-                                      color: _theColors.textColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                SizedBox(
-                                  height: 30.0,
-                                  width: 40.0,
-                                  child: Image.asset(
-                                      'lib/assets/icons/${state.weather.daily[2].weatherV[0].icon}.png'),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return Icon(
-                              Icons.error,
-                              color: _theColors.textColor,
-                            );
-                          }
-                        },
-                      ),
-                    ],
+                  BottomRow(
+                    color: _theColors.textColor,
+                    day: _weekDay.dayplus2,
+                    num: 2,
                   ),
                   Container(
                     height: 4.0,
                     width: 400.0,
                     color: _theColors.textColor,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _weekDay.dayplus3,
-                        style: TextStyle(
-                          color: _theColors.textColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17.0,
-                        ),
-                      ),
-                      BlocBuilder<NextDaysBloc, NextDaysState>(
-                        builder: (context, state) {
-                          if (state is NextDaysLoadSuccess) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.weather.daily[3].temp.day
-                                          .toStringAsFixed(1) +
-                                      ' °C',
-                                  style: TextStyle(
-                                      color: _theColors.textColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                SizedBox(
-                                  height: 30.0,
-                                  width: 40.0,
-                                  child: Image.asset(
-                                      'lib/assets/icons/${state.weather.daily[3].weatherV[0].icon}.png'),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return Icon(
-                              Icons.error,
-                              color: _theColors.textColor,
-                            );
-                          }
-                        },
-                      ),
-                    ],
+                  BottomRow(
+                    color: _theColors.textColor,
+                    day: _weekDay.dayplus3,
+                    num: 3,
                   ),
                   Container(
                     height: 4.0,
