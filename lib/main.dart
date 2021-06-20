@@ -23,10 +23,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<CurrentBloc>(create: (context) => CurrentBloc(weatherRepository)..add(CurrentRequested())),
-        BlocProvider<NextDaysBloc>(create: (context) => NextDaysBloc(weatherRepository)..add(NextDaysRequested())),
+        BlocProvider<CurrentBloc>(
+            create: (context) =>
+                CurrentBloc(weatherRepository)..add(CurrentRequested())),
+        BlocProvider<NextDaysBloc>(
+            create: (context) =>
+                NextDaysBloc(weatherRepository)..add(NextDaysRequested())),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Home(),
       ),
     );
