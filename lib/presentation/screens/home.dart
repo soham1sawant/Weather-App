@@ -30,11 +30,14 @@ class Home extends StatelessWidget {
                             if (state is CurrentWeatherInProgress) {
                               return CircularProgressIndicator();
                             } else if (state is CurrentWeatherLoadSuccess) {
-                              return Text(
-                                state.weather.areaName,
-                                style: TextStyle(
-                                  color: _theColors.textColor,
-                                  fontSize: 50.0,
+                              return Expanded(
+                                child: Text(
+                                  state.weather.areaName,
+                                  overflow: TextOverflow.fade,
+                                  style: TextStyle(
+                                    color: _theColors.textColor,
+                                    fontSize: 50.0,
+                                  ),
                                 ),
                               );
                             } else {
