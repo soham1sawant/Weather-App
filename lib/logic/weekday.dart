@@ -3,13 +3,13 @@ class WeekDay {
   String dayplus3;
 
   WeekDay({
-    this.dayplus2,
-    this.dayplus3,
+    required this.dayplus2,
+    required this.dayplus3,
   });
 
   factory WeekDay.getDays() {
-    String plus2;
-    String plus3;
+    late String plus2;
+    late String plus3;
 
     DateTime date = DateTime.now();
     if ((date.weekday) == 1) {

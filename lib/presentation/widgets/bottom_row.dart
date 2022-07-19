@@ -7,7 +7,7 @@ class BottomRow extends StatelessWidget {
   final color;
   final num;
 
-  const BottomRow({Key key, this.day, this.color, this.num}) : super(key: key);
+  const BottomRow({Key? key, this.day, this.color, this.num}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class BottomRow extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    state.weather.daily[num].temp.day.toStringAsFixed(1) + ' °C',
+                    '${state.weather.daily[num].temp.day.toStringAsFixed(1)} °C',
                     style: TextStyle(
                       color: color,
                       fontWeight: FontWeight.bold,
