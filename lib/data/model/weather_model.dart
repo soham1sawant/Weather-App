@@ -6,11 +6,11 @@ class WeatherModel {
   List<Daily> daily;
 
   WeatherModel({
-    this.latitude,
-    this.longitude,
-    this.timezone,
-    this.timezoneOffset,
-    this.daily,
+    required this.latitude,
+    required this.longitude,
+    required this.timezone,
+    required this.timezoneOffset,
+    required this.daily,
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
@@ -43,19 +43,19 @@ class Daily {
   num uvi;
 
   Daily({
-    this.dt,
-    this.sunrise,
-    this.sunset,
-    this.temp,
-    this.feelsLike,
-    this.pressure,
-    this.humidity,
-    this.dewPoint,
-    this.windSpeed,
-    this.weatherV,
-    this.clouds,
-    this.pop,
-    this.uvi,
+    required this.dt,
+    required this.sunrise,
+    required this.sunset,
+    required this.temp,
+    required this.feelsLike,
+    required this.pressure,
+    required this.humidity,
+    required this.dewPoint,
+    required this.windSpeed,
+    required this.weatherV,
+    required this.clouds,
+    required this.pop,
+    required this.uvi,
   });
 
   factory Daily.fromJson(Map<String, dynamic> dailyList) {
@@ -89,12 +89,12 @@ class Temperature {
   num morn;
 
   Temperature({
-    this.day,
-    this.min,
-    this.max,
-    this.night,
-    this.eve,
-    this.morn,
+    required this.day,
+    required this.min,
+    required this.max,
+    required this.night,
+    required this.eve,
+    required this.morn,
   });
 
   factory Temperature.fromJson(Map<String, dynamic> tempJson) {
@@ -116,10 +116,10 @@ class FeelsLike {
   num morn;
 
   FeelsLike({
-    this.day,
-    this.night,
-    this.eve,
-    this.morn,
+    required this.day,
+    required this.night,
+    required this.eve,
+    required this.morn,
   });
 
   factory FeelsLike.fromJson(Map<String, dynamic> feelsJson) {
@@ -139,10 +139,10 @@ class WeatherV {
   String icon;
 
   WeatherV({
-    this.id,
-    this.main,
-    this.description,
-    this.icon,
+    required this.id,
+    required this.main,
+    required this.description,
+    required this.icon,
   });
 
   factory WeatherV.fromJson(Map<String, dynamic> weatherJson) {

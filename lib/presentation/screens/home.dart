@@ -15,123 +15,120 @@ class Home extends StatelessWidget {
       child: Scaffold(
           backgroundColor: _theColors.backgroundColor,
           body: Padding(
-            padding: EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 60.0),
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BlocBuilder<CurrentBloc, CurrentState>(
-                          builder: (context, state) {
-                            if (state is CurrentWeatherInProgress) {
-                              return CircularProgressIndicator();
-                            } else if (state is CurrentWeatherLoadSuccess) {
-                              return Expanded(
-                                child: Text(
-                                  state.weather.areaName,
-                                  overflow: TextOverflow.fade,
-                                  style: TextStyle(
-                                    color: _theColors.textColor,
-                                    fontSize: 50.0,
-                                  ),
-                                ),
-                              );
-                            } else {
-                              return Icon(Icons.error);
-                            }
-                          },
-                        ),
-                        Icon(
-                          Icons.search,
-                          color: _theColors.textColor,
-                          size: 50.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+            padding: const EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 60.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'TODAY',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: _theColors.textColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: BlocBuilder<CurrentBloc, CurrentState>(
-                      builder: (context, state) {
-                        if (state is CurrentWeatherLoadSuccess) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                  'lib/assets/icons/${state.weather.weatherIcon}.png'),
-                              Text(
-                                state.weather.temperature.toString().substring(
-                                        0,
-                                        state.weather.temperature
-                                            .toString()
-                                            .indexOf(' ')) +
-                                    ' °C',
+                      BlocBuilder<CurrentBloc, CurrentState>(
+                        builder: (context, state) {
+                          if (state is CurrentWeatherInProgress) {
+                            return const CircularProgressIndicator();
+                          } else if (state is CurrentWeatherLoadSuccess) {
+                            return Expanded(
+                              child: Text(
+                                state.weather.areaName!,
+                                overflow: TextOverflow.fade,
                                 style: TextStyle(
-                                  fontSize: 25.0,
                                   color: _theColors.textColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 50.0,
                                 ),
                               ),
-                            ],
-                          );
-                        } else {
-                          return Icon(
-                            Icons.error,
-                            color: _theColors.textColor,
-                          );
-                        }
-                      },
-                    ),
+                            );
+                          } else {
+                            return const Icon(Icons.error);
+                          }
+                        },
+                      ),
+                      Icon(
+                        Icons.search,
+                        color: _theColors.textColor,
+                        size: 50.0,
+                      ),
+                    ],
                   ),
-                  BottomRow(
-                    color: _theColors.textColor,
-                    day: "TOMORROW",
-                    num: 1,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'TODAY',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: _theColors.textColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                Expanded(
+                  flex: 5,
+                  child: BlocBuilder<CurrentBloc, CurrentState>(
+                    builder: (context, state) {
+                      if (state is CurrentWeatherLoadSuccess) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                                'lib/assets/icons/${state.weather.weatherIcon}.png'),
+                            Text(
+                              '${state.weather.temperature.toString().substring(
+                                      0,
+                                      state.weather.temperature
+                                          .toString()
+                                          .indexOf(' '))} °C',
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                color: _theColors.textColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        );
+                      } else {
+                        return Icon(
+                          Icons.error,
+                          color: _theColors.textColor,
+                        );
+                      }
+                    },
                   ),
-                  Container(
-                    height: 4.0,
-                    width: 400.0,
-                    color: _theColors.textColor,
-                  ),
-                  BottomRow(
-                    color: _theColors.textColor,
-                    day: _weekDay.dayplus2,
-                    num: 2,
-                  ),
-                  Container(
-                    height: 4.0,
-                    width: 400.0,
-                    color: _theColors.textColor,
-                  ),
-                  BottomRow(
-                    color: _theColors.textColor,
-                    day: _weekDay.dayplus3,
-                    num: 3,
-                  ),
-                  Container(
-                    height: 4.0,
-                    width: 400.0,
-                    color: _theColors.textColor,
-                  ),
-                ],
-              ),
+                ),
+                BottomRow(
+                  color: _theColors.textColor,
+                  day: "TOMORROW",
+                  num: 1,
+                ),
+                Container(
+                  height: 4.0,
+                  width: 400.0,
+                  color: _theColors.textColor,
+                ),
+                BottomRow(
+                  color: _theColors.textColor,
+                  day: _weekDay.dayplus2,
+                  num: 2,
+                ),
+                Container(
+                  height: 4.0,
+                  width: 400.0,
+                  color: _theColors.textColor,
+                ),
+                BottomRow(
+                  color: _theColors.textColor,
+                  day: _weekDay.dayplus3,
+                  num: 3,
+                ),
+                Container(
+                  height: 4.0,
+                  width: 400.0,
+                  color: _theColors.textColor,
+                ),
+              ],
             ),
           )),
     );

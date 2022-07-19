@@ -7,17 +7,19 @@ import 'logic/simple_bloc_observer.dart';
 import 'presentation/screens/home.dart';
 
 void main() {
-  Bloc.observer = SimpleBlocObserver();
 
   final WeatherRepository weatherRepository = WeatherRepository();
 
-  runApp(App(weatherRepository: weatherRepository));
+  BlocOverrides.runZoned(
+    () => runApp(App(weatherRepository: weatherRepository)),
+    blocObserver: SimpleBlocObserver(),
+  );
 }
 
 class App extends StatelessWidget {
   final WeatherRepository weatherRepository;
 
-  const App({Key key, @required this.weatherRepository}) : super(key: key);
+  const App({Key? key, required this.weatherRepository}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
