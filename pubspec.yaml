@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  weekdays:
+    path: packages/weekdays
 
 dev_dependencies:
   flutter_test:

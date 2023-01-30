@@ -1,0 +1,13 @@
+name: weather_api
+description: A dart Api for the  OpenWeatherApi
+version: 1.0.0+1
+publish_to: none
+
+environment:
+   sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  equatable: ^2.0.5
+  http: ^0.13.5
+
+dev_dependencies:
