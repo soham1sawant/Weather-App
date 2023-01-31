@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   weekdays:
     path: packages/weekdays
+  weather_api:
+    path: packages/weather_api
 
 dev_dependencies:
   flutter_test:
