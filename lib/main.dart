@@ -1,20 +1,33 @@
+import 'dart:developer';
+
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/app.dart';
 
 void main() {
-  runApp(const MainApp());
+  Bloc.observer = SimpleBlocObserver();
+  runApp(const App());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class SimpleBlocObserver extends BlocObserver {
+  @override
+  void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
+    super.onEvent(bloc, event);
+    log('${bloc.runtimeType} $event');
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
+  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
+    log('${bloc.runtimeType} $error');
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onTransition(
+    Bloc<dynamic, dynamic> bloc,
+    Transition<dynamic, dynamic> transition,
+  ) {
+    super.onTransition(bloc, transition);
+    log('$transition');
   }
 }
