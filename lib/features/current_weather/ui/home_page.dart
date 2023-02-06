@@ -74,7 +74,8 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                                'lib/assets/icons/${state.weather.weatherIcon}.png'),
+                              'assets/icons/${state.weather.weatherIcon}.png',
+                            ),
                             Text(
                               '${state.weather.temperature.toString().substring(0, state.weather.temperature.toString().indexOf(' '))} °C',
                               style: TextStyle(
@@ -132,8 +133,7 @@ class HomePage extends StatelessWidget {
                         day: state.plus3Day,
                         num: 3,
                       );
-                    }
-                    else {
+                    } else {
                       return const Center(
                         child: Icon(Icons.error),
                       );

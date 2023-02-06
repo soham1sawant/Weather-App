@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_api/weather_api.dart';
 import 'package:weather_app/features/current_weather/bloc/current_bloc.dart';
+import 'package:weather_app/features/current_weather/ui/home_page.dart';
 import 'package:weather_app/features/nextday_weather/bloc/nextdays_bloc.dart';
 import 'package:weather_app/features/weekday/cubit/weekday_cubit.dart';
 import 'package:weather_app/styles/themes.dart';
@@ -26,17 +27,17 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => CurrentBloc(
               RepositoryProvider.of<WeatherApiClient>(context),
-            ),
+            )..add(const CurrentWeatherRequested()),
           ),
           BlocProvider(
             create: (context) => NextdaysBloc(
               client: RepositoryProvider.of<WeatherApiClient>(context),
-            ),
+            )..add(NextDayWeatherRequested()),
           ),
           BlocProvider(
             create: (context) => WeekdayCubit(
               client: RepositoryProvider.of<WeekdaysClient>(context),
-            ),
+            )..getPlusDay(),
           ),
         ],
         child: MaterialApp(
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: MyTheme.lightTheme(context),
           darkTheme: MyTheme.darkTheme(context),
+           home: const HomePage(),
         ),
       ),
     );
