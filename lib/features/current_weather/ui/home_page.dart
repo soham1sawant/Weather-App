@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              'assets/icons/${state.weather.weatherIcon}.png',
+                              'assets/${state.weather.weatherIcon}.png',
                             ),
                             Text(
                               '${state.weather.temperature.toString().substring(0, state.weather.temperature.toString().indexOf(' '))} °C',

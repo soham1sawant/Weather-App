@@ -45,7 +45,7 @@ class BottomRow extends StatelessWidget {
                     height: 30.0,
                     width: 40.0,
                     child: Image.asset(
-                        'lib/assets/icons/${state.weather.daily[num].weatherV[0].icon}.png'),
+                        'assets/${state.weather.daily[num].weatherV[0].icon}.png',),
                   ),
                 ],
               );
