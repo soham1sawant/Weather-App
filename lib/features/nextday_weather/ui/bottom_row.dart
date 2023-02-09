@@ -29,7 +29,12 @@ class BottomRow extends StatelessWidget {
         ),
         BlocBuilder<NextdaysBloc, NextdaysState>(
           builder: (context, state) {
-            if (state is NextDaysLoaded) {
+            if (state is NextDaysLoadInProgress) {
+              return const SizedBox(
+                key: Key('next_day_loadinprogress'),
+              );
+            } else if (state is NextDaysLoaded) {
+              
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -45,9 +50,15 @@ class BottomRow extends StatelessWidget {
                     height: 30.0,
                     width: 40.0,
                     child: Image.asset(
-                        'assets/${state.weather.daily[num].weatherV[0].icon}.png',),
+                      'assets/${state.weather.daily[num].weatherV[0].icon}.png',
+                    ),
                   ),
                 ],
+              );
+            } else if (state is NextDaysLoadFailure) {
+              return Icon(
+                Icons.error,
+                color: color,
               );
             } else {
               return Icon(

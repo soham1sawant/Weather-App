@@ -25,9 +25,12 @@ class HomePage extends StatelessWidget {
                       BlocBuilder<CurrentBloc, CurrentState>(
                         builder: (context, state) {
                           if (state is CurrentLoadInProgress) {
-                            return const CircularProgressIndicator();
+                            return const SizedBox(
+                              key: Key('area_name_loadinprogress'),
+                            );
                           } else if (state is CurrentLoadSuccess) {
                             return Expanded(
+                              key: const Key('current_areaname_loadsuccess'),
                               child: Text(
                                 state.weather.areaName!,
                                 overflow: TextOverflow.fade,
@@ -86,6 +89,15 @@ class HomePage extends StatelessWidget {
                             ),
                           ],
                         );
+                      } else if (state is CurrentLoadInProgress) {
+                        return const SizedBox(
+                          key: Key('current_temp_loading_indicator'),
+                        );
+                      } else if (state is CurrentLoadFailure) {
+                        return Icon(
+                          Icons.error,
+                          color: Theme.of(context).hintColor,
+                        );
                       } else {
                         return Icon(
                           Icons.error,
@@ -113,6 +125,10 @@ class HomePage extends StatelessWidget {
                         day: state.plus2Day,
                         num: 2,
                       );
+                    } else if (state is WeekdayLoading) {
+                      return const SizedBox(
+                        key: Key('weekday_loadinprogress'),
+                      );
                     } else {
                       return const Center(
                         child: Icon(Icons.error),
@@ -132,6 +148,10 @@ class HomePage extends StatelessWidget {
                         color: Theme.of(context).hintColor,
                         day: state.plus3Day,
                         num: 3,
+                      );
+                    } else if (state is WeekdayLoading) {
+                      return const SizedBox(
+                        key: Key('weekday_loadinprogress'),
                       );
                     } else {
                       return const Center(

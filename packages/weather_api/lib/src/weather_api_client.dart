@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:weather/weather.dart';
@@ -40,6 +41,8 @@ class WeatherApiClient {
       desiredAccuracy: LocationAccuracy.high,
     );
 
+    log(position.toString());
+
     return position;
   }
 
@@ -48,7 +51,11 @@ class WeatherApiClient {
 
     WeatherFactory wF = WeatherFactory(_appkey);
     Weather w = await wF.currentWeatherByLocation(
-        position.latitude, position.longitude);
+      position.latitude,
+      position.longitude,
+    );
+
+    log(w.toString());
 
     return w;
   }
@@ -77,6 +84,7 @@ class WeatherApiClient {
     }
 
     try {
+      log(WeatherModel.fromJson(body).toString());
       return WeatherModel.fromJson(body);
     } on Exception {
       throw JsonDeserializationException();

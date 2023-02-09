@@ -6,9 +6,8 @@ import 'package:weather/weather.dart';
 import 'package:weather_api/weather_api.dart';
 import 'package:weather_app/features/current_weather/bloc/current_bloc.dart';
 
-class MockWeatherApiClient extends Mock implements WeatherApiClient {}
+import '../../../helpers/helper.dart';
 
-class MockWeathaer extends Mock implements Weather {}
 
 void main() {
   group('CurrentBloc', () {
@@ -17,7 +16,7 @@ void main() {
 
     setUp(() async {
       weatherApiClient = MockWeatherApiClient();
-      weather = MockWeathaer();
+      weather = MockWeather();
     });
 
     test('Initial state is CurrentLoadInProgress', () {

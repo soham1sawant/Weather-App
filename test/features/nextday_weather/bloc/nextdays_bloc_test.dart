@@ -4,9 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:weather_api/weather_api.dart';
 import 'package:weather_app/features/nextday_weather/bloc/nextdays_bloc.dart';
 
-class MockWeatherApiClient extends Mock implements WeatherApiClient {}
-
-class MockWeatherModel extends Mock implements WeatherModel {}
+import '../../../helpers/helper.dart';
 
 void main() {
   group('NextdaysBloc', () {
